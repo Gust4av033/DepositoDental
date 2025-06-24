@@ -1,0 +1,321 @@
+﻿{
+   "CodeGenerationMode": 4,
+   "ContextClassName": "AppDbContext",
+   "ContextNamespace": null,
+   "FilterSchemas": false,
+   "IncludeConnectionString": false,
+   "ModelNamespace": null,
+   "OutputContextPath": null,
+   "OutputPath": "DataAccess",
+   "PreserveCasingWithRegex": true,
+   "ProjectRootNamespace": "DepositoDental",
+   "Schemas": null,
+   "SelectedHandlebarsLanguage": 2,
+   "SelectedToBeGenerated": 1,
+   "T4TemplatePath": null,
+   "Tables": [
+      {
+         "Name": "[dbo].[cat_estados]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[cat_tiposcliente]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[cat_tiposdireccion]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[cat_tiposdocumento]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[cli_clientes]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[cli_contactosclientes]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[cli_direccionesclientes]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[com_ordenescompra]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[com_ordenescompradetalle]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[cta_asientoscontables]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[cta_asientosdetalle]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[cta_periodoscontables]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[cta_plancontable]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[geo_departamentos]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[geo_municipios]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[geo_paises]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[inv_bodegas]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[inv_categorias]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[inv_lotes]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[inv_marcas]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[inv_movimientos]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[inv_movimientosdetalle]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[inv_productos]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[inv_productos_historico]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[inv_stockbodegas]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[inv_tiposmovimiento]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[inv_ubicaciones]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[inv_unidadesmedida]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[prv_proveedores]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[rrh_cargos]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[rrh_empleados]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[rrh_planillas]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[rrh_planillasdetalle]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[rrh_tiposplanilla]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[sec_permisos]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[sec_roles]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[sec_rolpermisos]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[sec_sesiones]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[sec_usuarioroles]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[sec_usuarios]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ven_condicionespago]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ven_cotizaciones]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ven_cotizacionesdetalles]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ven_facturas]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ven_facturasdetalles]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ven_notascredito]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ven_pedidos]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ven_pedidosdetalle]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ven_series]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[vw_AnalisisVentasPorVendedor]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[dbo].[vw_AsientosContablesResumen]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[dbo].[vw_ClientesCompletos]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[dbo].[vw_ControlLotesVencimiento]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[dbo].[vw_CotizacionesResumen]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[dbo].[vw_EmpleadosActivos]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[dbo].[vw_FacturasResumen]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[dbo].[vw_MovimientosInventario]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[dbo].[vw_NotasCreditoResumen]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[dbo].[vw_OrdenesCompraResumen]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[dbo].[vw_PedidosResumen]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[dbo].[vw_ProductosCompletos]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[dbo].[vw_ProveedoresCompletos]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[dbo].[vw_ReporteFacturacion]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[dbo].[vw_ReporteFacturacionDetallado]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[dbo].[vw_ReporteInventario]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[dbo].[vw_ReporteInventarioDetallado]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[dbo].[vw_ReporteVentasVendedor]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[dbo].[vw_RolesConPermisos]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[dbo].[vw_UsuariosConRoles]",
+         "ObjectType": 3
+      }
+   ],
+   "UiHint": null,
+   "UncountableWords": null,
+   "UseAsyncStoredProcedureCalls": true,
+   "UseBoolPropertiesWithoutDefaultSql": false,
+   "UseDatabaseNames": false,
+   "UseDatabaseNamesForRoutines": true,
+   "UseDateOnlyTimeOnly": true,
+   "UseDbContextSplitting": false,
+   "UseDecimalDataAnnotationForSprocResult": true,
+   "UseFluentApiOnly": false,
+   "UseHandleBars": false,
+   "UseHierarchyId": false,
+   "UseInflector": true,
+   "UseInternalAccessModifiersForSprocsAndFunctions": false,
+   "UseLegacyPluralizer": false,
+   "UseManyToManyEntity": false,
+   "UseNoDefaultConstructor": false,
+   "UseNoNavigations": false,
+   "UseNoObjectFilter": false,
+   "UseNodaTime": false,
+   "UseNullableReferences": false,
+   "UsePrefixNavigationNaming": false,
+   "UseSchemaFolders": false,
+   "UseSchemaNamespaces": false,
+   "UseSpatial": false,
+   "UseT4": false,
+   "UseT4Split": false
+}
