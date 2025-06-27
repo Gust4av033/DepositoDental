@@ -11,13 +11,14 @@
   <ItemGroup>
     <Folder Include="DataAccess\" />
     <Folder Include="Models\Entities\" />
-    <Folder Include="Services\Abstractions\" />
-    <Folder Include="Services\Implementations\" />
+    <Folder Include="Views\" />
+    <Folder Include="ViewModels\" />
     <Folder Include="Views\" />
     <Folder Include="ViewModels\" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
     <PackageReference Include="MaterialDesignThemes" Version="5.2.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.16" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="9.0.6" />
