@@ -1,0 +1,64 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <ResourceDictionary.MergedDictionaries>
+        <!-- Cargar colores oscuros -->
+        <ResourceDictionary Source="Colors.xaml"/>
+        <!-- Cargar iconos -->
+        <ResourceDictionary Source="Icons.xaml"/>
+        <!-- Cargar estilos por defecto -->
+        <ResourceDictionary Source="DefaultStyles.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <!-- === ESTILOS ESPECÍFICOS PARA TEMA OSCURO === -->
+
+    <!-- Window por defecto para tema oscuro -->
+    <Style TargetType="Window">
+        <Setter Property="Background" Value="{DynamicResource Brush.Background.Primary}"/>
+        <Setter Property="Foreground" Value="{DynamicResource Brush.Text.Primary}"/>
+    </Style>
+
+    <!-- UserControl por defecto para tema oscuro -->
+    <Style TargetType="UserControl">
+        <Setter Property="Background" Value="{DynamicResource Brush.Background.Primary}"/>
+        <Setter Property="Foreground" Value="{DynamicResource Brush.Text.Primary}"/>
+    </Style>
+
+    <!-- ScrollBar para tema oscuro -->
+    <Style TargetType="ScrollBar">
+        <Setter Property="Background" Value="{DynamicResource Brush.Surface.Default}"/>
+        <Setter Property="Foreground" Value="{DynamicResource Brush.Text.Tertiary}"/>
+        <Setter Property="Width" Value="12"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ScrollBar">
+                    <Grid>
+                        <Border Background="{TemplateBinding Background}" CornerRadius="6"/>
+                        <Track Name="PART_Track" IsDirectionReversed="True">
+                            <Track.Thumb>
+                                <Thumb Background="{TemplateBinding Foreground}"
+                                       BorderThickness="0"
+                                       Width="8"
+                                       Margin="2"
+                                       Template="{DynamicResource ScrollBarThumbTemplate}"/>
+                            </Track.Thumb>
+                        </Track>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="Orientation" Value="Horizontal">
+                <Setter Property="Height" Value="12"/>
+                <Setter Property="Width" Value="Auto"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <!-- Template para ScrollBar Thumb -->
+    <ControlTemplate x:Key="ScrollBarThumbTemplate" TargetType="Thumb">
+        <Border Background="{TemplateBinding Background}"
+                CornerRadius="4"/>
+    </ControlTemplate>
+
+</ResourceDictionary>
