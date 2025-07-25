@@ -18,7 +18,7 @@
     <Border Background="{DynamicResource Brush.Background.Modal}" 
             BorderBrush="{DynamicResource Brush.Border.Default}"
             BorderThickness="1"
-            CornerRadius="12">
+            CornerRadius="12" Margin="0,0,0,-104">
         <Border.Effect>
             <DropShadowEffect Color="Black" 
                               Opacity="0.3" 
@@ -74,7 +74,7 @@
                             Height="80"
                             HorizontalAlignment="Center"
                             Margin="0,0,0,20">
-                        <Path Data="{StaticResource Icon.User}"
+                        <Path Data="{StaticResource Icon.Users }"
                               Fill="White"
                               Width="40"
                               Height="40"

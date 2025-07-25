@@ -10,6 +10,13 @@
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Themes/Dark.Steel.xaml" />
 
+                <ResourceDictionary Source="/Resources/Themes/Icons.xaml" />
+                <ResourceDictionary Source="/Resources/Themes/LightColors.xaml" />
+                <ResourceDictionary Source="/Resources/Themes/LightTheme.xaml" />
+                <ResourceDictionary Source="/Resources/Themes/DarkTheme.xaml" />
+                <ResourceDictionary Source="/Resources/Themes/DefaultStyles.xaml" />
+                <ResourceDictionary Source="/Resources/Themes/Colors.xaml"/>
+
                 <!-- Tus temas personalizados - se cargarán dinámicamente -->
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
