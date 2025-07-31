@@ -33,7 +33,7 @@ namespace DepositoDental.ViewModels
         {
             _authService = authService;
             _dialogService = dialogService; // Asigna el servicio de diálogo
-            // _themeManager = themeManager; // Asigna el servicio de tema
+            
 
             // Inicializar comandos
             NavigateCommand = new RelayCommand<string>(Navigate);

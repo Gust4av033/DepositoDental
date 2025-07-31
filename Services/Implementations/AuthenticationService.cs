@@ -47,8 +47,8 @@ namespace DepositoDental.Services.Implementations
                     };
                 }
 
-                // Verificar contraseña (aquí deberías usar BCrypt para comparar el hash)
-                bool passwordValid = VerifyPassword(password, usuario.Passwordhash);
+                // Verificar contraseña con BCrypt
+                bool passwordValid = BCrypt.Net.BCrypt.Verify(password, usuario.Passwordhash);
 
                 if (!passwordValid)
                 {
@@ -79,17 +79,20 @@ namespace DepositoDental.Services.Implementations
                     IsSuccess = true,
                     Usuario = usuario,
                     Roles = usuario.SecUsuarioroles
-                        .Where(ur => ur.Activo == true)
+                        .Where(ur => ur.Activo == true && ur.Rol?.Activo == true)
                         .Select(ur => ur.Rol.Nombrerol)
                         .ToList()
                 };
             }
             catch (Exception ex)
             {
+                // Log the exception here
+                System.Diagnostics.Debug.WriteLine($"Error en autenticación: {ex.Message}");
+
                 return new AuthenticationResult
                 {
                     IsSuccess = false,
-                    ErrorMessage = $"Error interno: {ex.Message}"
+                    ErrorMessage = "Error al procesar la solicitud. Por favor intente nuevamente."
                 };
             }
         }
@@ -106,15 +109,15 @@ namespace DepositoDental.Services.Implementations
                 if (existeUsuario)
                     return false;
 
-                // Crear hash de la contraseña (aquí deberías usar BCrypt)
-                string passwordHash = HashPassword(password);
+                // Crear hash de la contraseña con BCrypt
+                string passwordHash = BCrypt.Net.BCrypt.HashPassword(password, BCrypt.Net.BCrypt.GenerateSalt(12));
 
                 var nuevoUsuario = new SecUsuario
                 {
                     Nombreusuario = nombreUsuario,
                     Correoelectronico = email,
                     Passwordhash = passwordHash,
-                    Sal = "", // BCrypt no necesita sal separada
+                    Sal = "", // BCrypt incluye la sal en el hash
                     Primernombre = primerNombre,
                     Primerapellido = primerApellido,
                     Telefono = telefono,
@@ -128,24 +131,11 @@ namespace DepositoDental.Services.Implementations
 
                 return true;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                System.Diagnostics.Debug.WriteLine($"Error al crear usuario: {ex.Message}");
                 return false;
             }
-        }
-
-        private bool VerifyPassword(string password, string hash)
-        {
-            // Por ahora comparación simple - DEBES implementar BCrypt
-            // return BCrypt.Net.BCrypt.Verify(password, hash);
-            return password == hash; // TEMPORAL - muy inseguro
-        }
-
-        private string HashPassword(string password)
-        {
-            // Por ahora hash simple - DEBES implementar BCrypt
-            // return BCrypt.Net.BCrypt.HashPassword(password);
-            return password; // TEMPORAL - muy inseguro
         }
     }
 
