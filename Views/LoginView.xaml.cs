@@ -79,29 +79,35 @@ namespace DepositoDental.Views
             });
         }
 
+        // --- MÉTODO CORREGIDO ---
         private void OnShowCreateUserDialog()
         {
-            try
+            // Usamos Dispatcher.Invoke para ejecutar en el hilo de la UI
+            Dispatcher.Invoke(() =>
             {
-                // Obtener el CreateUserViewModel del contenedor de DI
-                var createUserViewModel = App.ServiceProvider.GetRequiredService<CreateUserViewModel>();
-                var createUserView = new CreateUserView(createUserViewModel);
-
-                // Mostrar como modal
-                var result = createUserView.ShowDialog();
-
-                if (result == true)
+                try
                 {
-                    // Usuario creado exitosamente
-                    MessageBox.Show("Usuario creado exitosamente. Ahora puede iniciar sesión.",
-                        "Usuario Creado", MessageBoxButton.OK, MessageBoxImage.Information);
+                    // Obtener el CreateUserViewModel del contenedor de DI
+                    var createUserViewModel = App.ServiceProvider.GetRequiredService<CreateUserViewModel>();
+                    var createUserView = new CreateUserView(createUserViewModel);
+
+                    // Mostrar como modal
+                    var result = createUserView.ShowDialog();
+
+                    if (result == true)
+                    {
+                        // Usuario creado exitosamente
+                        MessageBox.Show("Usuario creado exitosamente. Ahora puede iniciar sesión.",
+                            "Usuario Creado", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error al abrir la ventana de crear usuario: {ex.Message}",
-                    "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
+                catch (Exception ex)
+                {
+                    // La excepción interna original era "El subproceso de llamada debe ser STA..."
+                    MessageBox.Show($"Error al abrir la ventana de crear usuario: {ex.Message}",
+                        "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            });
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
