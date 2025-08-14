@@ -4,9 +4,236 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DepositoDental"
+        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="Depósito Dental" 
+        Height="700" 
+        Width="1200"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="CanResizeWithGrip">
 
-    </Grid>
+    <Border Background="{DynamicResource Brush.Background.Primary}" 
+            CornerRadius="2"
+            BorderThickness="1"
+            BorderBrush="{DynamicResource Brush.Border.Default}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <!-- Title Bar -->
+                <RowDefinition Height="*"/>
+                <!-- Main Content -->
+            </Grid.RowDefinitions>
+
+            <!-- ========== CUSTOM TITLE BAR ========== -->
+            <Grid Grid.Row="0" Height="40" Background="{DynamicResource Brush.Accent.Primary}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Hamburger Menu Button -->
+                <Button Grid.Column="0" 
+                        Width="40" 
+                        Height="40"
+                        Background="Transparent"
+                        BorderThickness="0"
+                        Command="{Binding ToggleMenuCommand}"
+                        Focusable="False">
+                    <iconPacks:PackIconModern Kind="Home" 
+                                              Foreground="White"/>
+                </Button>
+
+                <!-- Page Title -->
+                <TextBlock Grid.Column="1"
+                           Text="{Binding PageTitle}"
+                           VerticalAlignment="Center"
+                           FontSize="14"
+                           FontWeight="Bold"
+                           Foreground="White"
+                           Margin="10,0"/>
+
+                <!-- User Info & Window Controls -->
+                <StackPanel Grid.Column="2" Orientation="Horizontal">
+                    <!-- User Profile -->
+                    <Button Command="{Binding ShowUserProfileCommand}"
+                            Background="Transparent"
+                            BorderThickness="0"
+                            Focusable="False"
+                            ToolTip="Perfil de usuario">
+                        <StackPanel Orientation="Horizontal" Margin="0,0,10,0">
+                            <!-- User Initials Badge -->
+                            <Border Width="30"
+                                    Height="30"
+                                    CornerRadius="15"
+                                    Background="White"
+                                    BorderBrush="White"
+                                    BorderThickness="1">
+                                <TextBlock Text="{Binding UserInitials}"
+                                           Foreground="{DynamicResource Brush.Accent.Primary}"
+                                           FontWeight="Bold"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"/>
+                            </Border>
+                            <!-- User Name -->
+                            <TextBlock Text="{Binding CurrentUserName}"
+                                       VerticalAlignment="Center"
+                                       Margin="8,0,0,0"
+                                       Foreground="White"/>
+                        </StackPanel>
+                    </Button>
+
+                    <!-- Window Controls -->
+                    <Button Style="{StaticResource WindowButtonStyle}"
+                            Content="0"
+                            controls:ControlsHelper.ContentCharacterCasing="Normal"
+                            Command="{Binding Source={x:Static SystemCommands.MinimizeWindowCommand}}"
+                            CommandTarget="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
+                    <Button Style="{StaticResource WindowButtonStyle}"
+                            Content="1"
+                            controls:ControlsHelper.ContentCharacterCasing="Normal"
+                            Command="{Binding Source={x:Static SystemCommands.MaximizeWindowCommand}}"
+                            CommandTarget="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
+                    <Button Style="{StaticResource WindowButtonStyle}"
+                            Content="r"
+                            controls:ControlsHelper.ContentCharacterCasing="Normal"
+                            Command="{Binding Source={x:Static SystemCommands.CloseWindowCommand}}"
+                            CommandTarget="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
+                </StackPanel>
+            </Grid>
+
+            <!-- ========== MAIN CONTENT AREA ========== -->
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <!-- Side Menu -->
+                    <ColumnDefinition Width="*"/>
+                    <!-- Content Area -->
+                </Grid.ColumnDefinitions>
+
+                <!-- ===== SIDE MENU ===== -->
+                <Border Grid.Column="0" 
+                        Width="250"
+                        Background="{DynamicResource Brush.Background.Secondary}"
+                        Visibility="{Binding IsMenuOpen, Converter={StaticResource BooleanToVisibilityConverter}}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <!-- User Profile -->
+                            <RowDefinition Height="*"/>
+                            <!-- Menu Items -->
+                            <RowDefinition Height="Auto"/>
+                            <!-- Footer Actions -->
+                        </Grid.RowDefinitions>
+
+                        <!-- User Profile Panel -->
+                        <Border Grid.Row="0" 
+                                Background="{DynamicResource Brush.Accent.Primary}"
+                                Padding="20,30,20,20">
+                            <StackPanel Orientation="Vertical">
+                                <!-- User Initials Badge -->
+                                <Border Width="60"
+                                        Height="60"
+                                        CornerRadius="30"
+                                        Background="White"
+                                        BorderBrush="White"
+                                        BorderThickness="1"
+                                        HorizontalAlignment="Center">
+                                    <TextBlock Text="{Binding UserInitials}"
+                                               Foreground="{DynamicResource Brush.Accent.Primary}"
+                                               FontWeight="Bold"
+                                               FontSize="18"
+                                               HorizontalAlignment="Center"
+                                               VerticalAlignment="Center"/>
+                                </Border>
+
+                                <!-- User Name -->
+                                <TextBlock Text="{Binding CurrentUserName}"
+                                           HorizontalAlignment="Center"
+                                           Foreground="White"
+                                           FontSize="14"
+                                           FontWeight="SemiBold"
+                                           Margin="0,10,0,0"/>
+
+                                <!-- User Email -->
+                                <TextBlock Text="{Binding CurrentUser.Email}"
+                                           HorizontalAlignment="Center"
+                                           Foreground="White"
+                                           FontSize="12"
+                                           Margin="0,5,0,0"/>
+                            </StackPanel>
+                        </Border>
+
+                        <!-- Menu Items -->
+                        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+                            <ItemsControl ItemsSource="{Binding MenuItems}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <!-- Menu Items with Subitems -->
+                                        <Expander IsExpanded="{Binding IsExpanded}" 
+                                                  Header="{Binding Title}" 
+                                                  Style="{StaticResource MenuExpanderStyle}">
+                                            <ItemsControl ItemsSource="{Binding SubItems}"
+                                                          ItemTemplate="{StaticResource SubMenuItemTemplate}"/>
+                                        </Expander>
+
+                                        <!-- Simple Menu Items -->
+                                        <DataTemplate.Triggers>
+                                            <DataTrigger Binding="{Binding HasSubItems}" Value="False">
+                                                <Setter Property="ItemsControl.ItemTemplate">
+                                                    <Setter.Value>
+                                                        <DataTemplate>
+                                                            <Button Content="{Binding Title}"
+                                                                    Command="{Binding DataContext.NavigateCommand, 
+                                                                        RelativeSource={RelativeSource AncestorType=Window}}"
+                                                                    CommandParameter="{Binding NavigationKey}"
+                                                                    Style="{StaticResource MenuItemButtonStyle}"/>
+                                                        </DataTemplate>
+                                                    </Setter.Value>
+                                                </Setter>
+                                            </DataTrigger>
+                                        </DataTemplate.Triggers>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </ScrollViewer>
+
+                        <!-- Footer Actions -->
+                        <StackPanel Grid.Row="2" 
+                                    Orientation="Vertical"
+                                    Background="{DynamicResource Brush.Background.Secondary}">
+                            <Separator Background="{DynamicResource Brush.Border.Default}"/>
+                            <Button Command="{Binding LogoutCommand}"
+                                    Style="{StaticResource FooterButtonStyle}">
+                                <StackPanel Orientation="Horizontal">
+                                    <iconPacks:PackIconModern Kind="DoorLeave" 
+                                                              VerticalAlignment="Center"
+                                                              Margin="0,0,8,0"/>
+                                    <TextBlock Text="Cerrar Sesión" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </Button>
+                            <Button Command="{Binding ChangeThemeCommand}"
+                                    Style="{StaticResource FooterButtonStyle}">
+                                <StackPanel Orientation="Horizontal">
+                                    <iconPacks:PackIconModern Kind="Settings" 
+                                                              VerticalAlignment="Center"
+                                                              Margin="0,0,8,0"/>
+                                    <TextBlock Text="Cambiar Tema" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </Button>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+                <!-- ===== CONTENT AREA ===== -->
+                <ContentControl Grid.Column="1" 
+                                Content="{Binding CurrentView}"
+                                Margin="10"/>
+            </Grid>
+        </Grid>
+    </Border>
 </Window>

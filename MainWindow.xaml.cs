@@ -1,4 +1,6 @@
-﻿using System.Text;
+﻿using DepositoDental.ViewModels;
+using Microsoft.Extensions.DependencyInjection;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -16,9 +18,21 @@ namespace DepositoDental
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        private readonly MainViewModel _viewModel;
+
+        public MainWindow(MainViewModel viewModel)
         {
             InitializeComponent();
+            _viewModel = viewModel;
+            DataContext = _viewModel;
+
+            // Establecer el usuario actual después del login
+            var loginViewModel = App.ServiceProvider.GetService<LoginViewModel>();
+            if (loginViewModel != null && loginViewModel.CurrentUser != null)
+            {
+                _viewModel.SetCurrentUser(loginViewModel.CurrentUser);
+            }
         }
+
     }
 }

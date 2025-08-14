@@ -40,6 +40,13 @@ namespace DepositoDental.ViewModels
             }
         }
 
+        private SecUsuario _currentUser;
+        public SecUsuario CurrentUser
+        {
+            get => _currentUser;
+            private set => SetProperty(ref _currentUser, value);
+        }
+
         public SecureString Password
         {
             get => _password;
@@ -112,6 +119,7 @@ namespace DepositoDental.ViewModels
 
                 if (result.IsSuccess)
                 {
+                    CurrentUser = result.Usuario;
                     LoginSuccess?.Invoke();
                 }
                 else
