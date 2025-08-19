@@ -342,7 +342,16 @@ namespace DepositoDental.ViewModels
         {
             CurrentUser = user;
         }
-
+        // Agregar este método público a la clase MainViewModel
+        public void OnWindowLoaded()
+        {
+            // Aquí puedes agregar la lógica que necesites ejecutar cuando la ventana principal se cargue.
+            // Por ejemplo, inicializar datos, cargar información del usuario, etc.
+        }        // Si también necesitas un método para el cierre de la ventana, puedes agregar:
+        public void OnWindowClosing()
+        {
+            // Lógica para guardar estado, liberar recursos, etc.
+        }
         #endregion
     }
 
